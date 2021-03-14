@@ -9,9 +9,12 @@ public class DemoMainApp {
     AnnotationConfigApplicationContext appConn = new AnnotationConfigApplicationContext(DemoConfig.class);
     AccountDao accountDao = appConn.getBean("accountDao", AccountDao.class);
    MembershipDao membershipDao=appConn.getBean("membershipDao", MembershipDao.class);
-    accountDao.addAccount();
+   Account theAccount = new Account();
+    accountDao.addAccount(theAccount, true);
+    accountDao.doWork();
     System.out.println("===============================");
     membershipDao.addSillyMember();
+    membershipDao.goToSleep();
 
     appConn.close();
     }
